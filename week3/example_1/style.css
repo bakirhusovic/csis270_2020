@@ -1,0 +1,57 @@
+body {
+    font-family: sans-serif;
+    /*background: gray;*/
+    margin: 30px;
+    color: coral;
+}
+
+a {
+    color: inherit;
+}
+
+h3 {
+    font-size: 200%;
+    color: red;
+}
+
+h1 {
+    color: rgb(200, 200, 200);
+}
+
+#test {
+    font-style: italic;
+}
+
+.important {
+    color: blue;
+    font-weight: bold;
+}
+
+.anotherClass {
+    font-size: 10px;
+}
+
+h5.anotherClass {
+    font-size: 50px;
+}
+
+div p span {
+    font-weight: bold;
+}
+
+/*
+div span {
+    font-weight: bold;
+}*/
+
+div > p > span {
+    font-size: 25px;
+}
+
+p + p {
+    font-size: 25px;
+}
+
+[alt] {
+    float: left;
+}
