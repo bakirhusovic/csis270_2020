@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+    color: #4d4d4d;
+    font-size: 16px;
+    background-color: #e3e3e3;
+    background-image: url('https://scontent.fsjj1-1.fna.fbcdn.net/v/t31.0-8/s960x960/12307548_922435097821901_3128950556760914612_o.png?_nc_cat=104&_nc_sid=8024bb&_nc_ohc=T_eYF5_lc00AX_twuQP&_nc_ht=scontent.fsjj1-1.fna&oh=1349196471c9590d3506052a125b2ff6&oe=5E9742F2');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 500px;
+    background-attachment: fixed;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    font-variant: small-caps;
+    letter-spacing: 10px;
+    word-spacing: 50px;
+}
+
+/*
+    type = 1 / 1
+    class, attribute = 2 / 1
+    id = 3 / 1
+
+    (ID, C/A, T)
+ */
+
+p { /* (0, 0, 1) */
+    color: red;
+    line-height: 25px;
+    background-color: white;
+}
+
+#green { /* (1, 0, 0) */
+    color: green;
+    text-decoration: underline !important;
+}
+
+.orange { /* (0, 1, 0) */
+    color: orange;
+}
+
+div div div p { /* 1 + 1 + 1 + 1 = 4 ( 0, 0, 4) */
+    color: rgb(150, 0, 0) !important; /* ((1) 0, 0, 4) */
+    font-style: italic;
+}
+
+[title] { /* (0, 1, 0) */
+    color: #b6f28d;
+    font-style: normal;
+}
+
+a {
+    color: coral;
+}
+
+a:hover, a:focus {
+    color: red;
+}
