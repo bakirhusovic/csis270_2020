@@ -1,0 +1,12 @@
+#default, #border_box {
+    width: 100%;
+    padding: 20px;
+    border: 10px solid;
+    /*margin: 50px;*/
+    margin-bottom: 50px;
+    background-color: red;
+}
+
+#border_box {
+    box-sizing: border-box;
+}
