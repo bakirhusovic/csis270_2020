@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+    font-family: Roboto;
+    background-color: #f3f3f3;
+}
+
+header{
+    background-color: #2D3748;
+}
+
+header .naslov{
+    width:1100px;
+    margin: auto;
+}
+
+header h1{
+    display: inline-block;
+    color: white;
+}
+
+header .naslov nav{
+    float: right;
+    margin-top:25px;
+}
+
+header .naslov nav a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    margin-left: 20px;
+}
+
+.sredina{
+    width: 1100px;
+    margin: auto;
+}
+
+.naslov-2{
+    background-color:white;
+    padding: 15px;
+    display: inline-block;
+    width: 100%;
+    box-shadow: 0 0 2px #e6e5e4;
+}
+
+.lijevo{
+    float: left;
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.sredina .lijevo h2{
+    font-size: 50px;
+}
+
+.sredina .lijevo p{
+    color: grey;
+}
+
+.sredina .desno{
+    padding: 15px;
+}
+
+.sredina .desno p{
+    padding: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+}
+
+.desno{
+    float:right;
+}
