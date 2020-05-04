@@ -1,0 +1,32 @@
+Specification:
+
+Load google font: https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=PT+Sans+Narrow:wght@400;700&display=swap
+Oswald is used for headings, PT Sans Narrow is used for other elements
+
+Width of the main content area: 1170px
+Default font size: 18px
+
+Page background color: E2E8F0
+Header and footer background color: 1A202C
+Background color for navigation items in hover state: 2D3748
+"Action" button background color: 9B2C2C
+
+Columns (elements where you have image contained) have a shadow
+When hovering these columns increase their size and animate it. Apply this effect to the desktop version only.
+Change of background color for navigation items must be animated. Make animation duration to be 0.5s and effect to be 'ease'.
+
+Navigation item links should open in a new tab/window.
+
+Separation of letters in the heading must be done using a CSS rule. Do not use space character in the HTML document.
+
+
+image 1: https://images.pexels.com/photos/68147/waterfall-thac-dray-nur-buon-me-thuot-daklak-68147.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=426&w=640
+image 2: https://images.pexels.com/photos/462118/pexels-photo-462118.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=426&w=640
+
+
+text 1: Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias animi consectetur distinctio exercitationem expedita explicabo, id libero maiores mollitia obcaecati odio odit officia quaerat, qui quibusdam vero voluptate voluptates! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda debitis deserunt, ducimus excepturi, fugit, libero maiores necessitatibus neque possimus repellat tempore voluptatem. Assumenda atque et molestias necessitatibus numquam praesentium ratione.
+
+
+text 2: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad culpa, ducimus eius eos eum, exercitationem laboriosam molestiae nemo nobis odit officiis similique totam. Consectetur iusto nisi optio quia repudiandae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad at autem consequatur debitis dolorum, excepturi fugiat laboriosam libero magni nam, nobis non officia optio velit! Libero quae, unde? Odit!
+
+text 3: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dolorum est et eum fuga itaque iusto nam nobis, optio, placeat possimus, quam quidem suscipit totam ullam? Ad consequatur laboriosam praesentium! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aut, cumque cupiditate dignissimos eaque est, inventore neque nulla odio officiis porro quasi qui saepe sapiente sit soluta veritatis vitae, voluptas!
