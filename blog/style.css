@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 18px;
+    background-color: #E2E8F0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.wrapper {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    font-family: Oswald, sans-serif;
+    margin: 0;
+    line-height: 1;
+}
+
+header {
+    background: #1A202C;
+    color: white;
+    padding: 20px 0;
+}
+
+header h1 {
+    letter-spacing: 10px;
+}
+
+header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav a {
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.5s ease;
+}
+
+header nav a:hover {
+    background-color: #2D3748;
+}
+
+#first-section {
+    background-color: white;
+    text-align: center;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+}
+
+#first-section p {
+    margin: 0;
+    font-style: italic;
+    padding: 40px;
+    font-size: 20px;
+}
+
+#first-section a {
+    background-color: #9B2C2C;
+    color: white;
+    font-weight: bold;
+    padding: 15px 40px;
+    border-radius: 5px;
+}
+
+main.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+main div {
+    width: 575px;
+    background-color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in;
+}
+
+main div:hover {
+    transform: scale(1.05);
+}
+
+main div img {
+    margin: -10px -10px 0;
+    width: 575px;
+}
+
+main div p {
+    line-height: 28px;
+    text-align: justify;
+}
+
+footer {
+    padding: 10px 0;
+    background: #1A202C;
+    color: white;
+}
+
+footer .wrapper {
+    display: flex;
+}
+
+footer span {
+    margin-left: auto;
+}
+
+@media (max-width: 600px) {
+    .wrapper {
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    nav {
+        display: none;
+    }
+
+    main.wrapper {
+        justify-content: center;
+    }
+
+    main div {
+        max-width: 100%;
+    }
+
+    main div img {
+        max-width: calc(100% + 20px);
+    }
+
+    main div:first-of-type {
+        margin-bottom: 20px;
+    }
+
+    main div:hover {
+        transform: none;
+    }
+}
