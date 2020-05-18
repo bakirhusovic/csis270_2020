@@ -1,13 +1,10 @@
 <?php
-    session_start();
-    include('includes/loggedUserOnly.php');
-    include('includes/db.php');
-
-    $query = oci_parse($conn, 'select * from categories');
-    oci_execute($query);
-
-    $title = 'New post';
-
+session_start();
+if (isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+    exit();
+}
+    $title = 'Login';
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,24 +20,16 @@
     </div>
 </section>
 <section class="wrapper">
-    <form action="save.php" method="POST">
+    <form action="validate_login.php" method="POST">
         <div>
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" placeholder="Please enter title">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Please enter username">
         </div>
         <div>
-            <label for="content">Content</label>
-            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Please enter password">
         </div>
-        <div>
-            <label for="category_id">Category</label>
-            <select name="category_id" id="category_id">
-                <?php while($row = oci_fetch_assoc($query)): ?>
-                    <option value="<?= $row['ID'] ?>"><?= $row['TITLE'] ?></option>
-                <?php endwhile; ?>
-            </select>
-        </div>
-        <button type="submit">Save</button>
+        <button type="submit">Login</button>
     </form>
 </section>
 <?php include('includes/footer.php') ?>

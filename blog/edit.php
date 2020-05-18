@@ -1,12 +1,16 @@
 <?php
     include('includes/db.php');
+    include('includes/loggedUserOnly.php');
 
     $title = 'Edit post';
 
     $id = $_GET['id'];
     $query = oci_parse($conn, 'select * from posts where id = ' . $id);
     oci_execute($query);
-    $row = oci_fetch_assoc($query);
+    $post = oci_fetch_assoc($query);
+
+    $categoryQuery = oci_parse($conn, 'select * from categories');
+    oci_execute($categoryQuery);
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,17 +30,18 @@
         <input type="hidden" name="id" value="<?= $id ?>">
         <div>
             <label for="title">Title</label>
-            <input type="text" name="title" id="title" placeholder="Please enter title" value="<?= $row['TITLE'] ?>">
+            <input type="text" name="title" id="title" placeholder="Please enter title" value="<?= $post['TITLE'] ?>">
         </div>
         <div>
             <label for="content">Content</label>
-            <textarea name="content" id="content" cols="30" rows="10"><?= $row['CONTENT'] ?></textarea>
+            <textarea name="content" id="content" cols="30" rows="10"><?= $post['CONTENT'] ?></textarea>
         </div>
         <div>
             <label for="category_id">Category</label>
             <select name="category_id" id="category_id">
-                <option value="21" <?= $row['CATEGORY_ID'] == 21 ? 'selected' : null ?>>Sport</option>
-                <option value="22" <?= $row['CATEGORY_ID'] == 22 ? 'selected' : null ?>>Music</option>
+                <?php while($category = oci_fetch_assoc($categoryQuery)): ?>
+                    <option value="<?= $category['ID'] ?>" <?= $post['CATEGORY_ID'] == $category['ID'] ? 'selected' : null ?>><?= $category['TITLE'] ?></option>
+                <?php endwhile; ?>
             </select>
         </div>
         <button type="submit">Save</button>

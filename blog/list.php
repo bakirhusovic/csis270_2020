@@ -1,5 +1,6 @@
 <?php
     include('includes/db.php');
+    include('includes/loggedUserOnly.php');
 
     $title = 'All posts';
 
