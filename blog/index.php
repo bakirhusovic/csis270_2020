@@ -6,7 +6,7 @@
 
 
     // $query = mysqli_query($conn, 'select posts.*, categories.title as category_title from posts, categories where posts.category_id = categories.id');
-    $query = oci_parse($conn, 'select posts.*, categories.title as category_title from posts, categories where posts.category_id = categories.id');
+    $query = oci_parse($conn, 'select posts.*, categories.title as category_title from posts, categories where posts.category_id = categories.id and posts.is_published = 1');
     oci_execute($query);
 ?>
 <!doctype html>
@@ -30,7 +30,7 @@
 <main class="wrapper">
     <?php while($row = oci_fetch_assoc($query)):?>
     <div>
-        <img src="https://images.pexels.com/photos/68147/waterfall-thac-dray-nur-buon-me-thuot-daklak-68147.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=426&w=640" alt="Waterfall">
+        <img src="assets/uploads/<?= $row['IMAGE'] ?>" alt="Waterfall">
         <h3><?= $row['TITLE'] ?></h3>
         <p><?= $row['CONTENT'] ?></p>
         <p><?= $row['CATEGORY_TITLE'] ?></p>

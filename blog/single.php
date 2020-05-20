@@ -12,6 +12,9 @@ session_start();
 
     if (oci_num_rows($query) === 0) {
         die('Post is not found');
+    } else {
+        oci_execute(oci_parse($conn, 'update posts set read_count = read_count + 1 where id = ' . $id));
+        oci_commit($conn);
     }
 
     $title = $row['TITLE'] . ' | ' . $row['CATEGORY_TITLE'];
@@ -31,7 +34,8 @@ session_start();
 </section>
 <main class="wrapper">
     <div>
-        <img src="https://images.pexels.com/photos/68147/waterfall-thac-dray-nur-buon-me-thuot-daklak-68147.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=426&w=640" alt="Waterfall">
+        <img src="assets/uploads/<?= $row['IMAGE'] ?>" alt="Waterfall">
+        <span>Read count: <?= $row['READ_COUNT']; ?></span>
         <h3><?= $row['TITLE'] ?></h3>
         <p><?= $row['CONTENT'] ?></p>
         <p><?= $row['CATEGORY_TITLE'] ?></p>
