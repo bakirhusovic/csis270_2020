@@ -8,10 +8,11 @@ if ($_POST) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = oci_parse($conn, "select * from users where username = '{$username}' and password = '{$password}'");
+    $query = oci_parse($conn, "select * from users where username = :username and password = :password");
+    oci_bind_by_name($query, ':username', $username);
+    oci_bind_by_name($query, ':password', $password);
     oci_execute($query);
-var_dump("select * from users where username = '{$username}' and password = '{$password}'");
-    var_dump(oci_error());
+    var_dump(oci_error($query));
 
     $row = oci_fetch_assoc($query);
 

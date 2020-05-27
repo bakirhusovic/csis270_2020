@@ -11,9 +11,12 @@ if ($_POST) {
 
     move_uploaded_file($_FILES['image']['tmp_name'], '../../assets/uploads/' . $imageFileName);
 
-    $query = oci_parse($conn, "insert into posts (title, content, category_id, image, is_published) values ('{$title}', '{$content}', {$category_id}, '{$imageFileName}', {$is_published})");
+    $query = oci_parse($conn, "insert into posts (title, content, category_id, image, is_published) values ('{$title}', '{$content}', {$category_id}, '{$imageFileName}', {$is_published}) returning id into :id");
+    oci_bind_by_name($query, ':id', $newId);
     oci_execute($query);
     oci_commit($conn);
+
+    // var_dump($newId);
 
     header('Location: list.php');
 }
