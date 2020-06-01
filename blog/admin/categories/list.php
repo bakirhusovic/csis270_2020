@@ -27,7 +27,7 @@
         <tr>
             <td><?= $row['TITLE'] ?></td>
             <td><a href="edit.php?id=<?= $row['ID'] ?>">EDIT</a></td>
-            <td><a href="delete.php?id=<?= $row['ID'] ?>">DELETE</a></td>
+            <td><a href="delete.php?id=<?= $row['ID'] ?>" onclick="return confirm('Are you sure that you want to delete this category')">DELETE</a></td>
         </tr>
         <?php endwhile; ?>
     </table>

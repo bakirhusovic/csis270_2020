@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="test"></div>
+    <button onclick="changeTestParagraph(this)">Click</button>
+    <button onclick="testJavascriptRequest()">Call test.php</button><br>
+    <button onclick="deleteRecord()">Delete</button><br>
+    <p class="testClass">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aperiam atque cum dignissimos dolorum eum ex facilis illum impedit, in iure nostrum officiis provident, quas quisquam repellat repudiandae, vero.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aperiam atque cum dignissimos dolorum eum ex facilis illum impedit, in iure nostrum officiis provident, quas quisquam repellat repudiandae, vero.</p>
+    <div class="testClass">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aperiam atque cum dignissimos dolorum eum ex facilis illum impedit, in iure nostrum officiis provident, quas quisquam repellat repudiandae, vero.</div>
+    <a href="https://google.com" onclick="return confirm('Are you sure?');">Google</a>
+    <section id="section_1">Section 1</section>
+    <section id="section_2">Section 2</section>
+    <section id="section_3">Section 3</section>
+    <section id="section_4">Section 4</section>
+    <section id="section_5">Section 5</section>
+    <button id="add_new_section">New section</button>
+    <script>
+        let counter = 0;
+        let testElement = document.getElementById('test');
+        testElement.innerHTML = 'Hello <br> World';
+        function changeTestParagraph(button) {
+            testElement.style.color = ++counter % 2 === 0 ? 'red' : 'green';
+            button.innerHTML = 'Click | clicked ' + counter + ' times';
+        }
+        function reqListener () {
+            testElement.innerHTML = this.responseText;
+            // console.log('Response is ' + this.responseText);
+        }
+
+        function testJavascriptRequest() {
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load", reqListener);
+            oReq.open("GET", "http://localhost:8000/test.php");
+            oReq.send();
+        }
+
+        function deleteRecord() {
+            if (confirm('Are you sure?')) {
+                alert('okay we will delete it')
+            } else {
+                alert('You are safe');
+            }
+        }
+
+        $(document).ready(function () {
+            console.log(document.getElementById('test-new'));
+            //alert('Document is now ready');
+            $(document).on('click', 'section', function () {
+                alert($(this).attr('id'));
+            });
+            $('#add_new_section').click(function() {
+                $('#section_5').after('<section id="section_6">Section 6</section>');
+                $(this).slideUp('5000');
+            });
+        });
+    </script>
+    <div id="test-new">Test</div>
+</body>
+</html>
