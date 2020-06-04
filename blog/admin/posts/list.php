@@ -5,15 +5,28 @@
 
     $title = 'All posts';
 
+    $sortColumn = $_GET['sort'] ?? 'posts.id';
+    $order = $_GET['order'] ?? 'asc';
+    // $sort = isset($_GET['sort']) ? $_GET['sort'] : 'id';
 
     // $query = mysqli_query($conn, 'select posts.*, categories.title as category_title from posts, categories where posts.category_id = categories.id');
-    $query = oci_parse($conn, 'select posts.*, categories.title as category_title from posts, categories where posts.category_id = categories.id');
+    $query = oci_parse($conn, 'select posts.*, categories.title as category_title from posts, categories where posts.category_id = categories.id order by ' . $sortColumn . ' ' . $order);
     oci_execute($query);
 ?>
 <!doctype html>
 <html lang="en">
 <head>
     <?php include('../../includes/head.php') ?>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 <?php include('../../includes/header.php') ?>
@@ -31,14 +44,16 @@
     endif; ?>
     <table>
         <tr>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Published</th>
+            <th><a href="list.php?sort=posts.id&order=<?= $sortColumn === 'posts.id' && $order === 'asc' ? 'desc' : 'asc'; ?>">#</a></th>
+            <th><a href="list.php?sort=posts.title&order=<?= $sortColumn === 'posts.title' && $order === 'asc' ? 'desc' : 'asc'; ?>">Title</a></th>
+            <th><a href="list.php?sort=categories.title&order=<?= $sortColumn === 'categories.title' && $order === 'asc' ? 'desc' : 'asc'; ?>">Category</a></th>
+            <th><a href="list.php?sort=is_published&order=<?= $sortColumn === 'is_published' && $order === 'asc' ? 'desc' : 'asc'; ?>">Published</a></th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
         <?php while($row = oci_fetch_assoc($query)):?>
         <tr>
+            <td><?= $row['ID'] ?></td>
             <td><?= $row['TITLE'] ?></td>
             <td><?= $row['CATEGORY_TITLE'] ?></td>
             <td><?= $row['IS_PUBLISHED'] == 1 ? 'Yes' : 'No' ?></td>

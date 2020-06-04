@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function reqListener () {
+            var result = JSON.parse(this.responseText);
+            var resultElement = document.getElementById('result');
+            resultElement.innerHTML = 'Current temperature is: <b>' + result.current.temperature + '</b><br>' +
+                '<img src="' + result.current.weather_icons[0] + ' "><br>' +
+                '<h3>' + result.location.name + '</h3>' +
+                '<h4>' + result.location.country + '</h4>'
+            ;
+        }
+
+        function testJavascriptRequest() {
+            var oReq = new XMLHttpRequest();
+            var location = document.getElementById('location').value;
+            oReq.addEventListener("load", reqListener);
+            oReq.open("GET", "http://localhost:8000/api.php?location=" + location);
+            oReq.send();
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <label for="location">Location</label><br>
+        <input type="text" id="location">
+        <button onclick="testJavascriptRequest()">Submit</button>
+    </div>
+    <div id="result"></div>
+</body>
+</html>
